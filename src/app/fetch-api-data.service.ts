@@ -7,6 +7,9 @@ import { map } from 'rxjs/operators'
 
 // Declariong the api url that will provide data for the cleint app
 const apiUrl = 'https://rpflixdb.herokuapp.com/';
+const token = localStorage.getItem('token');
+const username = localStorage.getItem('user');
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,21 +37,19 @@ export class FetchApiDataService {
 
     // Get all movies
     getAllMovies(): Observable<any> {
-      const token =localStorage.getItem('token');
-      return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer' + token,
+    return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
+      {
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
         map(this.extractResponseData),
         catchError(this.handleError)
       );
-    }
+  }
 
     // Get one movie
     getMovie(title: any): Observable<any> {
-      const token =localStorage.getItem('token');
       return this.http.get(apiUrl + 'movies/' + title, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
@@ -62,7 +63,6 @@ export class FetchApiDataService {
 
     // Get director
     getDirector(name: any): Observable<any> {
-      const token =localStorage.getItem('token');
       return this.http.get(apiUrl + 'directors/' + name, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
@@ -76,7 +76,6 @@ export class FetchApiDataService {
 
     // Get genre
     getGenre(name: any): Observable<any> {
-      const token =localStorage.getItem('token');
       return this.http.get(apiUrl + 'genres/' + name, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
@@ -90,7 +89,6 @@ export class FetchApiDataService {
 
     // Get user
     getUser(user: any): Observable<any> {
-      const token =localStorage.getItem('token');
       return this.http.get(apiUrl + 'users/' + user, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
@@ -119,9 +117,7 @@ export class FetchApiDataService {
 
     // Edit user
     editUser(userData: any): Observable<any> {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user')
-      return this.http.put(apiUrl + 'users/' + user, userData, {headers: new HttpHeaders(
+      return this.http.put(apiUrl + 'users/' + username, userData, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })
@@ -134,9 +130,7 @@ export class FetchApiDataService {
 
     // Delete user
     deleteUser(): Observable<any> {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user')
-      return this.http.delete(apiUrl + 'users/' + user, {headers: new HttpHeaders(
+      return this.http.delete(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })
@@ -149,9 +143,7 @@ export class FetchApiDataService {
 
     // Delete movie from favorite movies
     deleteFavorites(movieId: any): Observable<any> {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user')
-      return this.http.delete(apiUrl + 'users/' + user + '/favorites/' + movieId, {headers: new HttpHeaders(
+      return this.http.delete(apiUrl + 'users/' + username + '/favorites/' + movieId, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })
@@ -164,9 +156,7 @@ export class FetchApiDataService {
 
     // Add movie from favorite movies
     addFavorites(movieId: any): Observable<any> {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user')
-      return this.http.patch(apiUrl + 'users/' + user + '/favorites/' + movieId, {headers: new HttpHeaders(
+      return this.http.patch(apiUrl + 'users/' + username + '/favorites/' + movieId, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })
