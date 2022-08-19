@@ -33,7 +33,7 @@ loginUser(): void {
     // Add token and username to local Storage
     localStorage.setItem('token', result.token);
     localStorage.setItem('user', result.user.Username)
-    this.snackBar.open(result, 'OK', {
+    this.snackBar.open('Login successful!', 'OK', {
       duration: 2000
     });
   }, (result) => {
