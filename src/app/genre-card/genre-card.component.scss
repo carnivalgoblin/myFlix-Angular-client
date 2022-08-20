@@ -1,0 +1,24 @@
+$bgColor: #DFDFDE;
+$cardColor: #F7F5F2;
+$favFullColor: #F56D91;
+$linkColor: #395B64;
+
+.mat-card {
+  background-color: $cardColor;
+}
+
+.mat-card-title {
+  text-align: center;
+}
+
+.mat-card-subtitle {
+  text-align: center;
+}
+
+.close-button {
+  color: $linkColor;
+  padding: 0;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}

@@ -1,7 +1,58 @@
+$bgColor: #DFDFDE;
+$cardColor: #F7F5F2;
+$favFullColor: #F56D91;
+$linkColor: #395B64;
+
 img {
+  width: 250px;
   height: 350px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px 15px;
+  background-color: $bgColor;
 }
 
 .mat-card {
-text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 15px;
+  box-shadow: 4px 4px 4px lightgray;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: $cardColor;
+}
+
+.mat-card-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  color: $linkColor;
+}
+
+.mat-card-actions > .mat-primary {
+  margin: 10px !important;
+  color: $linkColor;
+}
+
+.director-button {
+  color: $linkColor;
+  padding: 0;
+}
+
+.mat-card-title {
+  text-align: center;
+}
+
+.mat-card-subtitle {
+  text-align: center;
 }
