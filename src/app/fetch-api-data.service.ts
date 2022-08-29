@@ -88,8 +88,8 @@ export class FetchApiDataService {
     }
 
     // Get user
-    getUser(user: any): Observable<any> {
-      return this.http.get(apiUrl + 'users/' + user, {headers: new HttpHeaders(
+    getUser(): Observable<any> {
+      return this.http.get(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })
@@ -102,9 +102,7 @@ export class FetchApiDataService {
 
     // Get favorite movies for a user
     getFavorites(): Observable<any> {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user');
-      return this.http.get(apiUrl + 'users/' + user + '/favorites/', {headers: new HttpHeaders(
+      return this.http.get(apiUrl + 'users/' + username + '/favorites/', {headers: new HttpHeaders(
         {
           Authorization: 'Bearer' + token,
         })

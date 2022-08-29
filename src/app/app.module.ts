@@ -25,10 +25,14 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { GenreCardComponent } from './genre-card/genre-card.component';
 import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
 import { DirectorCardComponent } from './director-card/director-card.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileViewComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' }
 ];
 
@@ -41,7 +45,10 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     GenreCardComponent,
     SynopsisCardComponent,
-    DirectorCardComponent
+    DirectorCardComponent,
+    ProfileViewComponent,
+    NavbarComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
