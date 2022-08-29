@@ -14,6 +14,8 @@ import { GenreCardComponent } from '../genre-card/genre-card.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+  favoriteMovies: any[] = [];
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -59,6 +61,38 @@ export class MovieCardComponent implements OnInit {
         Birthday: birthday
       },
       width: '500px'
+    });
+  }
+
+  // Get favorite movies
+  getFavoriteMovies(): void {
+    this.fetchApiData.getFavorites().subscribe((response: any) => {
+      this.favoriteMovies = response;
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
+    });
+  }
+  
+  // Check if a movie is a favorite
+  isFav(movieId: string): boolean {
+    return this.favoriteMovies.includes(movieId);
+  }
+
+  //add to favs
+  addFavorites(movieId: string): void {
+    console.log(movieId);
+    this.fetchApiData.addFavorites(movieId).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
+  }
+
+  //delete to favs
+  deleteFavorites(movieId: string): void {
+    console.log(movieId);
+    this.fetchApiData.deleteFavorites(movieId).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
     });
   }
 }

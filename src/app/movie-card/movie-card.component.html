@@ -13,8 +13,11 @@
         color="primary">Genre</button>
       <button (click)="openSynopsisDialog(movie.Title, movie.Description)" mat-stroked-button
         color="primary">Synopsis</button>
-      <button mat-stroked-button color="primary">
+      <button mat-stroked-button *ngIf="!isFav(movie._id)" (click)="addFavorites(movie._id)" color="primary">
         <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button mat-stroked-button *ngIf="isFav(movie._id)" (click)="deleteFavorites(movie._id)" color="primary">
+        <mat-icon>favorite</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

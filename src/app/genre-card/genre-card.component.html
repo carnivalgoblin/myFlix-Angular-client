@@ -1,1 +1,15 @@
-<p>genre-card works!</p>
+<mat-card class="genre-dialog">
+  <mat-card-title class="genre-dialog-title">
+    {{ data.Name }}
+  </mat-card-title>
+  <br />
+  <mat-dialog-content class="genre-dialog-content">
+    <b class="subtitle">Description: </b><br><br>{{ data.Description }}
+  </mat-dialog-content>
+  <mat-card-actions class="genre-actions">
+    <button class="close-button" mat-stroked-button aria-label="Close the genre button" mat-dialog-close
+      color="primary">
+      X
+    </button>
+  </mat-card-actions>
+</mat-card>
