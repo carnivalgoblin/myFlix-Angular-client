@@ -7,6 +7,7 @@ $boxShadowColor: #e9ecef;
     background-color: $cardColor;
     margin-top: 0px;
     box-shadow: none;
+    text-align: center;
 }
 
 .edit-profile-dialog-title {
@@ -22,7 +23,8 @@ $boxShadowColor: #e9ecef;
 }
 
 .edit-profile-actions {
-    display: flex
+    display: flex;
+    justify-content: center;
 }
 
 .mat-card {
@@ -30,4 +32,8 @@ $boxShadowColor: #e9ecef;
   border: 1px solid lightgrey;
   border-radius: 10px;
   background-color: $cardColor;
+}
+
+.close-button {
+    margin-right: 0;
 }
