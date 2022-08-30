@@ -23,6 +23,7 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
   this.getMovies();
+  this.getFavoriteMovies();
   }
 
   getMovies(): void  {
@@ -30,6 +31,15 @@ export class MovieCardComponent implements OnInit {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
+    });
+  }
+
+  // Get favorite movies
+  getFavoriteMovies(): void {
+    this.fetchApiData.getFavorites().subscribe((resp: any) => {
+      this.favoriteMovies = resp;
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
     });
   }
 
@@ -63,19 +73,10 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
-
-  // Get favorite movies
-  getFavoriteMovies(): void {
-    this.fetchApiData.getFavorites().subscribe((response: any) => {
-      this.favoriteMovies = response;
-      console.log(this.favoriteMovies);
-      return this.favoriteMovies;
-    });
-  }
   
   // Check if a movie is a favorite
-  isFav(movieId: string): boolean {
-    return this.favoriteMovies.includes(movieId);
+  isFav(id: string): boolean {
+    return this.favoriteMovies.includes(id);
   }
 
   //add to favs

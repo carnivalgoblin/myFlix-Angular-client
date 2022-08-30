@@ -52,7 +52,7 @@ export class FetchApiDataService {
     getMovie(title: any): Observable<any> {
       return this.http.get(apiUrl + 'movies/' + title, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -65,7 +65,7 @@ export class FetchApiDataService {
     getDirector(name: any): Observable<any> {
       return this.http.get(apiUrl + 'directors/' + name, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -78,7 +78,7 @@ export class FetchApiDataService {
     getGenre(name: any): Observable<any> {
       return this.http.get(apiUrl + 'genres/' + name, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -91,7 +91,7 @@ export class FetchApiDataService {
     getUser(): Observable<any> {
       return this.http.get(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -102,9 +102,9 @@ export class FetchApiDataService {
 
     // Get favorite movies for a user
     getFavorites(): Observable<any> {
-      return this.http.get(apiUrl + 'users/' + username + '/favorites/', {headers: new HttpHeaders(
+      return this.http.get(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -117,7 +117,7 @@ export class FetchApiDataService {
     editUser(userData: any): Observable<any> {
       return this.http.put(apiUrl + 'users/' + username, userData, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -130,7 +130,7 @@ export class FetchApiDataService {
     deleteUser(): Observable<any> {
       return this.http.delete(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -143,7 +143,7 @@ export class FetchApiDataService {
     deleteFavorites(movieId: string): Observable<any> {
       return this.http.delete(apiUrl + 'users/' + username + '/favorites/' + movieId, {headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
@@ -154,9 +154,9 @@ export class FetchApiDataService {
 
     // Add movie from favorite movies
     addFavorites(movieId: string): Observable<any> {
-      return this.http.patch(apiUrl + 'users/' + username + '/favorites/' + movieId, {headers: new HttpHeaders(
+      return this.http.patch(apiUrl + 'users/' + username + '/favorites/' + movieId, { Favorites: movieId },{headers: new HttpHeaders(
         {
-          Authorization: 'Bearer' + token,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(
