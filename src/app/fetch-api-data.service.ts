@@ -102,7 +102,7 @@ export class FetchApiDataService {
 
     // Get favorite movies for a user
     getFavorites(): Observable<any> {
-      return this.http.get(apiUrl + 'users/' + username, {headers: new HttpHeaders(
+      return this.http.get(apiUrl + 'users/' + username + '/movies', {headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
         })
