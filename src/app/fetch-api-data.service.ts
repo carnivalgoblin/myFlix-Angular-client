@@ -19,7 +19,11 @@ export class FetchApiDataService {
 // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) { 
     }
-    // Making the api call for the user registration endpoint
+    /**
+    * calls API endpoint to register a new user
+    * @param userDetails
+    * @returns a new user object in JSON format
+    */
     public userRegistration(userDetails: any): Observable<any> {
       console.log(userDetails);
       return this.http.post(apiUrl + 'users/register', userDetails).pipe(
@@ -27,7 +31,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Making the api call for the user login endpoint
+    /**
+    * calls API endpoint to login an existing user
+    * @param userDetails
+    * @returns data of the user in JSON format
+    */
     public userLogin(userDetails: any): Observable<any> {
       console.log(userDetails);
       return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -35,7 +43,10 @@ export class FetchApiDataService {
       );
     }
 
-    // Get all movies
+    /**
+    * calls API endpoint to get data on all movies
+    * @returns array of all movies in JSON format
+    */
     getAllMovies(): Observable<any> {
     return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
       {
@@ -48,7 +59,11 @@ export class FetchApiDataService {
       );
   }
 
-    // Get one movie
+    /**
+    * calls API endpoint to get data on a single movie specified by its title
+    * @param title
+    * @returns JSON object holding movie data
+    */
     getMovie(title: any): Observable<any> {
       return this.http.get(apiUrl + 'movies/' + title, {headers: new HttpHeaders(
         {
@@ -61,7 +76,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Get director
+    /**
+    * calls API endpoint to get data on a director
+    * @param name
+    * @returns JSON obejct holding director data
+    */
     getDirector(name: any): Observable<any> {
       return this.http.get(apiUrl + 'directors/' + name, {headers: new HttpHeaders(
         {
@@ -74,7 +93,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Get genre
+    /**
+    * calls API endpoint to get data on a genre
+    * @param name
+    * @returns JSON obejct holding genre data
+    */
     getGenre(name: any): Observable<any> {
       return this.http.get(apiUrl + 'genres/' + name, {headers: new HttpHeaders(
         {
@@ -87,7 +110,10 @@ export class FetchApiDataService {
       );
     }
 
-    // Get user
+    /**
+    * calls API endpoint to get data on a user
+    * @returns JSON obejct holding user data
+    */
     getUser(): Observable<any> {
       return this.http.get(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
@@ -100,7 +126,10 @@ export class FetchApiDataService {
       );
     }
 
-    // Get favorite movies for a user
+    /**
+    * calls API endpoint to get data on favorites list for a user
+    * @returns JSON obejct holding list of favorites
+    */
     getFavorites(): Observable<any> {
       return this.http.get(apiUrl + 'users/' + username + '/movies', {headers: new HttpHeaders(
         {
@@ -113,7 +142,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Edit user
+    /**
+    * calls API endpoint to allow user to update their user information
+    * @param userData
+    * @returns JSON object holding data about the updated user
+    */
     editUser(userData: any): Observable<any> {
       return this.http.put(apiUrl + 'users/' + username, userData, {headers: new HttpHeaders(
         {
@@ -126,7 +159,10 @@ export class FetchApiDataService {
       );
     }
 
-    // Delete user
+    /**
+    * calls API endpoint to deregister an existing user
+    * @returns	A success message indicating that the profile was successfully deleted.
+    */
     deleteUser(): Observable<any> {
       return this.http.delete(apiUrl + 'users/' + username, {headers: new HttpHeaders(
         {
@@ -139,7 +175,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Delete movie from favorite movies
+    /**
+    * calls API endpoint to delete a movie to the user's list of favorite movies
+    * @param movieID
+    * @returns JSON object holding data about the updated user
+    */
     deleteFavorites(movieId: string): Observable<any> {
       return this.http.delete(apiUrl + 'users/' + username + '/favorites/' + movieId, {headers: new HttpHeaders(
         {
@@ -152,7 +192,11 @@ export class FetchApiDataService {
       );
     }
 
-    // Add movie from favorite movies
+    /**
+    * calls API endpoint to add a movie to the user's list of favorite movies
+    * @param movieID
+    * @returns JSON object holding data about the updated user
+    */
     addFavorites(movieId: string): Observable<any> {
       return this.http.patch(apiUrl + 'users/' + username + '/favorites/' + movieId, { Favorites: movieId },{headers: new HttpHeaders(
         {
@@ -165,12 +209,21 @@ export class FetchApiDataService {
       );
     }
 
-    // Non-typed response extraction
+    /**
+    * extracts response data from HTTP response
+    * @param res
+    * @returns response body or empty object
+    */
     private extractResponseData(res: Response | Object): any {
       const body = res;
       return body || { };
     }
 
+    /**
+    * handles errors
+    * @param error
+    * @returns error message
+    */
     private handleError(error: HttpErrorResponse): any {
       if (error.error instanceof ErrorEvent) {
         console.error('Some error occurred:', error.error.message);
