@@ -1,0 +1,39 @@
+$bgColor: #DFDFDE;
+$cardColor: #F7F5F2;
+$textColor: #343a40;
+$boxShadowColor: #e9ecef;
+
+.edit-profile-dialog {
+    background-color: $cardColor;
+    margin-top: 0px;
+    box-shadow: none;
+    text-align: center;
+}
+
+.edit-profile-dialog-title {
+    color: $textColor;
+}
+
+.edit-profile-dialog-content {
+    color: $textColor;
+}
+
+::ng-deep .edit-profile-custom>mat-dialog-container {
+    background-color: $cardColor;
+}
+
+.edit-profile-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-card {
+  box-shadow: 4px 4px 4px lightgray;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: $cardColor;
+}
+
+.close-button {
+    margin-right: 0;
+}
