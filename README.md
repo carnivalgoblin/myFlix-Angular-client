@@ -61,6 +61,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 The aim of this project is to build the client-side for an application called myFlix using Angular based on its existing server-side code (REST API and database), with supporting documentation.
 
+The app is hosted on Github Pages: https://carnivalgoblin.github.io/myFlix-Angular-client
+
+![Mylfix web](src/assets/MyFlixAngularClient.png)
+![Mylfix mobile](src/assets/MyFlixAngularClient-mobile.png)
+
+
 ### User Stories
 
 - As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
